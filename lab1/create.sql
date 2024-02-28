@@ -1,31 +1,32 @@
 CREATE TABLE coordinates (
     id INT NOT NULL PRIMARY KEY,
-    xCor INT,
-    yCor INT
+    x_cor INT,
+    y_cor INT
 );
-CREATE TABLE areaObject (
+CREATE TABLE area_object (
     id INT NOT NULL PRIMARY KEY,
-    objName VARCHAR(64) NOT NULL,
-    coorId INT NOT NULL REFERENCES coordinates (id)
-);
-CREATE TABLE life (
-    id INT NOT NULL PRIMARY KEY,
-    lived BOOLEAN
+    obj_name VARCHAR(64) NOT NULL,
+    coor_id INT NOT NULL REFERENCES coordinates (id)
 );
 CREATE TABLE characterr (
     id INT NOT NULL PRIMARY KEY,
-    charName VARCHAR(64) NOT NULL,
-    locationAreaId INT NOT NULL REFERENCES areaObject (id),
-    currLifeId INT NOT NULL REFERENCES life (id)
+    char_name VARCHAR(64) NOT NULL,
+    location_area_id INT NOT NULL REFERENCES area_object (id)
 );
-CREATE TABLE natureObject (
+CREATE TABLE life (
     id INT NOT NULL PRIMARY KEY,
-    natName VARCHAR(64) NOT NULL,
-    situatedAtAreaId INT NOT NULL REFERENCES areaObject (id)
+    started_at TIMESTAMP,
+    ended_at TIMESTAMP,
+    char_owner_id INT NOT NULL REFERENCES characterr (id)
+);
+CREATE TABLE nature_object (
+    id INT NOT NULL PRIMARY KEY,
+    nat_name VARCHAR(64) NOT NULL,
+    situated_at_area_id INT NOT NULL REFERENCES area_object (id)
 );
 CREATE TABLE enchantment (
     id INT NOT NULL PRIMARY KEY,
-    enchName VARCHAR(64),
-    sourceAreaObjId INT NOT NULL REFERENCES areaObject (id),
-    destinationCharId INT NOT NULL REFERENCES characterr (id)
+    ench_name VARCHAR(64),
+    source_area_obj_id INT NOT NULL REFERENCES area_object (id),
+    destination_char_id INT NOT NULL REFERENCES characterr (id)
 );

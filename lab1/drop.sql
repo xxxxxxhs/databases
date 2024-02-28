@@ -1,6 +1,6 @@
 DROP TABLE enchantment;
-DROP TABLE natureObject;
-DROP TABLE characterr;
+DROP TABLE nature_object;
 DROP TABLE life;
-DROP TABLE areaObject;
+DROP TABLE characterr;
+DROP TABLE area_object;
 DROP TABLE coordinates;
